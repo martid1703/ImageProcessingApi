@@ -1,7 +1,7 @@
 namespace Models;
 public class Convert : ImageOperation
 {
-    int SliderValue { get; set; }
-    int SelectorValue { get; set; }
-    int SizeValue { get; set; }
+    public int SliderValue { get; set; }
+    public int SelectorValue { get; set; }
+    public int SizeValue { get; set; }
 }

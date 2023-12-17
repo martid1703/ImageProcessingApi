@@ -2,6 +2,7 @@ using ImageService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
+
 namespace ImageProcessingApi;
 
 [ApiController]
@@ -28,6 +29,8 @@ public class ImageProcessingController : ControllerBase
     [HttpPost(Name = "ProcessImages")]
     public async Task<ProcessResponse> ProcessImages([FromForm] ProcessRequest request)
     {
+        _logger.LogInformation("Begin processing of images.");
+
         var response = new ProcessResponse();
 
         for (int i = 0; i < request.Files.Count(); i++)
@@ -39,10 +42,14 @@ public class ImageProcessingController : ControllerBase
                 byte[] bytes = new byte[file.Length];
                 fileStream.Read(bytes, 0, (int)file.Length);
 
+                //var opStrings = JsonSerializer.Deserialize<List<string>>(request.ImageOperations[i]);
+
                 var processedImage = await _imageService.Process(bytes, request.ImageOperations[i]);
                 response.Files.Add(processedImage);
             }
         }
+
+        _logger.LogInformation("Images are processed successfully.");
 
         return response;
     }
