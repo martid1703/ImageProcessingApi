@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "ImageProcessingApi",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-ImageProcessingApi",
+            "program": "${workspaceFolder}/ImageProcessingApi/bin/Debug/net6.0/ImageProcessingApi.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/ImageProcessingApi",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/ImageProcessingApi/Views"
+            }
+        }
+    ]
+}
